@@ -1,0 +1,27 @@
+require("hkj.plugins.colorscheme")
+require("hkj.plugins.telescope")
+require("hkj.plugins.which-key")
+require("hkj.plugins.nvim-tree")
+require("hkj.plugins.alpha")
+require("hkj.plugins.auto-sessions")
+require("hkj.plugins.bufferline")
+require("hkj.plugins.lualine")
+require("hkj.plugins.treesitter")
+require("hkj.plugins.indent-blankline")
+require("hkj.plugins.nvim-cmp")
+require("hkj.plugins.autopair")
+require("hkj.plugins.comment")
+require("hkj.plugins.todo-comment")
+require("hkj.plugins.nvim-surround")
+require("hkj.plugins.lsp.mason")
+require("hkj.plugins.lsp.lsp")
+require("hkj.plugins.lsp")
+require("hkj.plugins.smearcursor")
+require("hkj.plugins.toggle-term")
+require("hkj.plugins.dap")
+require("hkj.plugins.fine-cmdline")
+
+vim.pack.add({
+  "https://github.com/nvim-lua/plenary.nvim",
+  "https://github.com/christoomey/vim-tmux-navigator"
+})

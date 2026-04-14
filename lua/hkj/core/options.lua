@@ -34,7 +34,7 @@ opt.signcolumn = "yes"  -- show sign column so that text doesn't shift
 opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line or insert mode start position
 
 -- clipboard
-opt.clipboard:append("unnamedplus") -- use system clipboard as default register
+-- opt.clipboard:append("unnamedplus") -- use system clipboard as default register
 
 -- split windows
 opt.splitright = true -- split vertical window to the right
@@ -43,3 +43,29 @@ opt.splitbelow = true -- split horizontal window to the bottom
 -- turn off swapfile
 opt.swapfile = false
 opt.laststatus = 3
+
+
+opt.title = true
+local cwd = os.getenv("PWD") or io.popen("cd"):read() -- Get current dir
+local basename = cwd:match("^.+/(.+)$") or cwd
+opt.titlestring = basename
+
+
+
+--undo settings
+-- Enable persistent undo
+
+
+-- Optional: Set a specific directory for undo files
+-- This keeps your working directories clean
+local undodir = vim.fn.stdpath("state") .. "/undo"
+
+if vim.fn.isdirectory(undodir) == 0 then
+  print("Undo directory missing, creating: " .. undodir)
+  vim.fn.mkdir(undodir, "p")
+end
+
+-- Set options
+vim.opt.undodir = undodir
+vim.opt.undofile = true
+

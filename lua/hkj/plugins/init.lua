@@ -19,7 +19,6 @@ require("hkj.plugins.lsp")
 require("hkj.plugins.smearcursor")
 require("hkj.plugins.toggle-term")
 require("hkj.plugins.dap")
-require("hkj.plugins.fine-cmdline")
 
 vim.pack.add({
   "https://github.com/nvim-lua/plenary.nvim",

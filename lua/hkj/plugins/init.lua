@@ -21,6 +21,7 @@ require("hkj.plugins.toggle-term")
 require("hkj.plugins.dap")
 require("hkj.plugins.tiny-cmd")
 require("hkj.plugins.undotree")
+require("hkj.plugins.conform")
 
 vim.pack.add({
   "https://github.com/nvim-lua/plenary.nvim",

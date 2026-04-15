@@ -19,5 +19,5 @@ mason.setup({
 
 mason_lspconfig.setup({
   -- ensure_installed = { "pyright", "lua_ls", "gopls", "bashls", "jdtls" },
-  ensure_installed = { "basedpyright", "lua_ls", "gopls", "bashls" },
+  ensure_installed = { "basedpyright", "lua_ls", "gopls", "bashls", "isort" },
 })

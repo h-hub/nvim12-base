@@ -53,3 +53,7 @@ keymap.set({ "n", "v" }, "x", [["_x]])
 vim.opt.clipboard = "unnamedplus"
 
 keymap.set("n", "Q", "<nop>")
+
+-- Stay in visual mode while indenting
+keymap.set("v", "<", "<gv", { desc = "Indent left and re-select" })
+keymap.set("v", ">", ">gv", { desc = "Indent right and re-select" })

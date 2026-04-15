@@ -25,15 +25,20 @@ dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
 
-
+local is_python_dap_setup = false
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "python",
   callback = function()
+    if is_python_dap_setup then
+      return
+    end
     vim.cmd.packadd("nvim-dap-python")
 
     require("dap-python").setup(".venv/bin/python")
 
     require("dap-python").test_runner = "pytest"
+
+    is_python_dap_setup = true
   end,
 })
 

@@ -69,3 +69,18 @@ end
 vim.opt.undodir = undodir
 vim.opt.undofile = true
 
+
+vim.api.nvim_set_hl(0, 'YankHighlight', { bg = '#ff9e64', fg = '#000000' })
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
+  callback = function()
+    vim.highlight.on_yank({
+      higroup = 'YankHighlight',
+      timeout = 100,
+    })
+  end,
+})
+
+vim.api.nvim_set_hl(0, "Visual", { bg = "#BFF5F0", fg = "#000000" })

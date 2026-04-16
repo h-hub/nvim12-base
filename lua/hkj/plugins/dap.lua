@@ -25,6 +25,7 @@ dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
 
+
 local is_python_dap_setup = false
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "python",
@@ -69,8 +70,20 @@ vim.keymap.set("n", "<leader>du", dapui.toggle, { desc = "DAP UI toggle" })
 vim.keymap.set('n', '<leader>dR', function()
   require("dapui").open({ reset = true })
 end, { desc = "Restore DAP UI Layout" })
--- IMPORTANT:
--- nvim-dap provides the client/UI integration, but you still must configure
--- at least one debug adapter (e.g. delve for Go, debugpy for Python, etc.).
--- Tell me which languages you want (go/python/node/rust/cpp/etc.) and I’ll add
--- the correct adapter + configurations for them.
+
+
+vim.keymap.set('n', '<leader>dX', function()
+  dapui.open({ layout = 2, reset = true })
+  local total_height = vim.opt.lines:get()
+  local target_height = math.floor(total_height * 0.5)
+
+  local wins = vim.api.nvim_list_wins()
+  for _, win in ipairs(wins) do
+    local buf = vim.api.nvim_win_get_buf(win)
+    local ft = vim.api.nvim_get_option_value("filetype", { buf = buf })
+
+    if ft == "dapui_repl" or ft == "dapui_console" then
+      vim.api.nvim_win_set_height(win, target_height)
+    end
+  end
+end, { desc = "Make Debug Console 50% height" })
